@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user! , only: [:new]
+  before_action :authenticate_user! , only: [:new, :create]
 
   def index
     @groups = Group.all
@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @group.user = current_user
   end
 
   def create
